@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2 align="center">Edit Products Details</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="text">ID :</label>
+
+        <input type="text" class="form-control" formControlName="pid" maxlength="4" id="pid" />
+
+        <div *ngIf="submitted && editForm.controls.pid.errors" class="error">
+          <div class="text-danger" *ngIf="editForm.controls.pid.errors.required">
+            ID is required ..
+          </div>
+        </div>
+        <label for="name"> Name : </label>
+        <input type="text" class="form-control" formControlName="name" id="name" />
+
+        <div *ngIf="submitted && editForm.controls.name.errors" class="error">
+          <div class="text-danger" *ngIf="editForm.controls.name.errors.required">
+            Name is required ..
+          </div>
+        </div>
+        <label for="description"> Description : </label>
+        <input type="text" class="form-control" formControlName="description" id="description" />
+
+        <div *ngIf="submitted && editForm.controls.description.errors" class="error">
+          <div class="text-danger" *ngIf="editForm.controls.description.errors.required">
+            Description is required ..
+          </div>
+        </div>
+
+        <label for="price"> Price : </label>
+        <input type="text" class="form-control" formControlName="price" id="price" />
+
+        <div *ngIf="submitted && editForm.controls.price.errors" class="error">
+          <div class="text-danger" *ngIf="editForm.controls.price.errors.required">
+            Price is required ..
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success">Submit</button> &nbsp;&nbsp;&nbsp;
+
+      <button class="btn btn-danger" type="reset">Cancel</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-warning" [routerLink]="['/list-product']">GoToList</button>
+    </form>
+  </div>
+</div>

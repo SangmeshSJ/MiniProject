@@ -1,0 +1,49 @@
+<div class="well">
+    <h1 class="page-header" align="center">Welcome to Product Application...!</h1>   
+    <h1 align="center">Product List</h1> 
+    
+  <br/><br/>
+  <table class="table table-striped table-bordered table-responsive table-hover">
+    <thead>
+      <tr >
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>   
+              <tr *ngFor='let prod of product | paginate: config'> 
+        
+        <td>{{prod.pid}}</td>
+        <td>{{prod.name}}</td>
+        <td>{{prod.description}}</td>
+        <td>{{prod.price}}</td>
+        <td>
+          <button class="btn btn-danger"(click)="deleteProduct(prod)"> Delete</button>&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-success"(click) = "editProduct(prod)"> Edit </button>
+        </td>
+      </tr>
+      
+      <tr *ngIf="!product || product.length==0">
+      <th colspan="5">
+        <p class="text-right text-warning">Sorry, No Product available...!
+          </p>
+      </th>
+    </tr>
+    </tbody>
+    
+  </table>
+  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination pagination pagination-lg"></pagination-controls>
+  
+  <div class="wrapper">
+  <button class="btn btn-primary" (click)="addProduct()">Add Products</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-success" (click)="deleteAll()">DeleteAll</button> &nbsp;&nbsp;&nbsp;
+  
+  </div>
+  
+  </div>
+  
+  
+  
